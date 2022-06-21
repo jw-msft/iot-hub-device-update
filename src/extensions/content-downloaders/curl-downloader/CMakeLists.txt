@@ -9,8 +9,6 @@ add_library (
     curl-content-downloader.cpp
 )
 
-#find_package (Parson REQUIRED)
-
 add_library (aduc::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 target_include_directories (${PROJECT_NAME} PUBLIC ${ADUC_EXTENSION_INCLUDES} ${ADUC_EXPORT_INCLUDES})
