@@ -62,7 +62,7 @@ cmake_installer_dir=""
 cmake_dir_symlink="${work_folder}/deviceupdate-cmake"
 
 # DO Deps
-default_do_ref=v0.8.2
+default_do_ref=v0.9.0
 install_do=false
 do_ref=$default_do_ref
 
@@ -70,7 +70,7 @@ do_ref=$default_do_ref
 aduc_packages=('git' 'make' 'build-essential' 'cmake' 'ninja-build' 'libcurl4-openssl-dev' 'libssl-dev' 'uuid-dev' 'python2.7' 'lsb-release' 'curl' 'wget' 'pkg-config')
 static_analysis_packages=('clang' 'clang-tidy' 'cppcheck')
 compiler_packages=("gcc-[68]")
-do_packages=('libproxy-dev' 'libssl-dev' 'zlib1g-dev' 'libboost-all-dev')
+do_packages=('libproxy-dev' 'libssl-dev' 'libboost-all-dev')
 
 # Distro and arch info
 OS=""
