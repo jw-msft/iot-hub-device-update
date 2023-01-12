@@ -275,7 +275,7 @@ static bool RegisterHandlerExtension(
     outFile = fopen(STRING_c_str(outFilePath), "w");
     if (outFile == NULL)
     {
-        Log_Error("Cannot open file: %s", STRING_c_str(outFilePath));
+        Log_Error("Cannot open file: %s, errno: %d", STRING_c_str(outFilePath), errno);
         goto done;
     }
 
@@ -457,7 +457,7 @@ bool RegisterExtension(const char* extensionDir, const char* extensionFilePath)
     outFile = fopen(STRING_c_str(outFilePath), "w");
     if (outFile == NULL)
     {
-        Log_Error("Cannot open file: %s", STRING_c_str(outFilePath));
+        Log_Error("Cannot open file: %s, errno: %d", STRING_c_str(outFilePath), errno);
         goto done;
     }
 

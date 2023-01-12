@@ -10,6 +10,7 @@
 #include <stdio.h> // for FILE
 #include <stdlib.h> // for calloc
 #include <strings.h> // for strcasecmp
+#include <sys/stat.h> // for stat
 
 #include <azure_c_shared_utility/azure_base64.h>
 #include <azure_c_shared_utility/buffer_.h>
@@ -298,7 +299,28 @@ bool ADUC_HashUtils_IsValidFileHash(
     {
         if (!suppressErrorLog)
         {
-            Log_Error("Cannot open file: %s", path);
+            struct stat st;
+            memset(&st, 0, sizeof(st));
+            if (stat(path, &st) == 0)
+            {
+                Log_Error("Cannot open file: %s, errno: %d,\n"
+                    "inode %d, mode 0%04o, nlinks: %d, uid: %d, gid: %d, size: %d, atime: %d, mtime: %d, ctime: %d",
+                    path, errno,
+                    st.st_ino,
+                    st.st_mode,
+                    st.st_nlink,
+                    st.st_uid,
+                    st.st_gid,
+                    st.st_size,
+                    st.st_atime,
+                    st.st_mtime,
+                    st.st_ctime
+                );
+            }
+            else
+            {
+                Log_Error("Cannot open file: %s, errno: %d", path, errno);
+            }
         }
         goto done;
     }
