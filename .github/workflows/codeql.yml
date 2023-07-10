@@ -69,7 +69,7 @@ jobs:
 
     - run: |
         echo "Run, Build Application using script"
-        ./scripts/install-deps.sh -k -f /home/runner/work/adu-deps --install-aduc-deps
+        ./scripts/install-deps.sh -k -f /home/runner/work/adu-deps --install-aduc-deps --install-do
         ./scripts/build.sh --type Debug
 
     - name: Perform CodeQL Analysis
