@@ -79,7 +79,7 @@ install_do=false
 do_ref=$default_do_ref
 
 # Dependencies packages
-aduc_packages=('git' 'make' 'build-essential' 'cmake' 'ninja-build' 'libcurl4-openssl-dev' 'libssl-dev' 'uuid-dev' 'python2.7' 'lsb-release' 'curl' 'wget' 'pkg-config')
+aduc_packages=('git' 'make' 'build-essential' 'cmake' 'ninja-build' 'libcurl4-openssl-dev' 'libssl-dev' 'uuid-dev' 'python2.7' 'lsb-release' 'curl' 'wget' 'pkg-config' 'libxml2-dev')
 static_analysis_packages=('clang' 'clang-tidy' 'cppcheck')
 compiler_packages=('gcc' 'g++')
 
@@ -195,7 +195,7 @@ do_install_aduc_packages() {
     elif [[ $OS == "Ubuntu" && $VER == "22.04" ]]; then
         $SUDO apt-get install --yes gcc-10 g++-10 || return
     else
-        $SUDO apt-get install --yes gcc-8 g++-8 || return
+        $SUDO apt-get install --yes gcc g++ || return
     fi
 
     echo "Installing packages required for static analysis..."
